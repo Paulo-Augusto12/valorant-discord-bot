@@ -68,7 +68,7 @@ module.exports = {
       console.log(abilities);
       const embed = () =>
         new EmbedBuilder()
-          .setThumbnail(agent.displayIcon)
+          // .setThumbnail(agent.displayIcon)
           .setTitle(`Confira dados do(a) agente ${agent.displayName}`)
           .setDescription(agent.description)
           .addFields(...abilities)
