@@ -28,7 +28,7 @@ async function getValorantCharacters() {
 async function getValorantCharacterData(id) {
   try {
     const { data } = await axios.get(
-      `https://valorant-api.com/v1/agents/${id}`
+      `https://valorant-api.com/v1/agents/${id}?language=pt-BR`
     );
 
     return data.data;
@@ -65,14 +65,20 @@ module.exports = {
         return { name: ability.displayName, value: ability.description };
       });
 
-      console.log(abilities)
+      console.log(abilities);
       const embed = () =>
         new EmbedBuilder()
           .setThumbnail(agent.displayIcon)
           .setTitle(`Confira dados do(a) agente ${agent.displayName}`)
           .setDescription(agent.description)
           .addFields(...abilities)
-          .setImage(agent.fullPortrait);
+          .setImage(agent.fullPortrait)
+          .setAuthor({
+            name: interaction.user.username,
+            iconURL: `https://cdn.discordapp.com/avatars/${interaction.user.id}/${interaction.user.avatar}.png`,
+          })
+          .setColor("Green")
+          .setTimestamp(new Date().getTime());
 
       return await option.reply({ embeds: [embed()] });
     } catch (err) {
