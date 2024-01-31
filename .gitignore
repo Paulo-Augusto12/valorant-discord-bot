@@ -4,3 +4,4 @@ package-lock.json
 *.lock
 config.json
 discloud.config
+*.zip
