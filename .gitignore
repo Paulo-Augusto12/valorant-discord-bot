@@ -2,3 +2,5 @@
 node_modules
 package-lock.json
 *.lock
+config.json
+discloud.config
